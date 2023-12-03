@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Myles Weaver</title>
+    
+    <style>
+        body {
+            background-color: #242323;
+            color: #ccc;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        button {
+            margin: 5px;
+            padding: 10px 20px;
+            background-color: #7902c9;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #7902c9;
+        }
+
+        #aboutMeContainer {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background-color: #0000009d;
+            box-sizing: border-box;
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .minimizeButton {
+            display: none; /* Initially hide the button */
+        }
+    </style>
+</head>
+
+<body>
+    <div id="aboutMeContainer">
+        <button onclick="toggleAboutMe()">-</button>
+        <button class="minimizeButton" onclick="buttonClicked(5)">About Me</button>
+        <button class="minimizeButton" onclick="buttonClicked(4)">File Server</button>
+    </div>
+    
+        <h1>Myles Weaver</h1>
+        <button onclick="buttonClicked(1)">LinkedIn</button>
+        <button onclick="buttonClicked(2)">GitHub</button>
+        <button onclick="buttonClicked(3)">VSCO</button>
+    
+
+    <script>
+
+    function toggleAboutMe() {
+        var buttons = document.getElementsByClassName("minimizeButton");
+        for (var i = 0; i < buttons.length; i++) {
+            buttons[i].style.display = buttons[i].style.display === "block" ? "none" : "block";
+        }
+    }
+
+        function buttonClicked(buttonNumber) {
+            console.log("Button " + buttonNumber + " clicked");
+            switch(buttonNumber){
+                case 1:
+                    window.location.href = 'https://www.linkedin.com/in/myles-weaver-247403196/'
+                    break;
+                case 2:
+                    window.location.href = 'https://github.com/DreamWeaver3033'
+                    break;
+                case 3: 
+                    window.location.href = 'https://vsco.co/myles-weaver/gallery'
+                    break;
+                case 4: 
+                    window.location.href = '/browse'
+                    break;
+                case 5:
+                    window.location.href = '/about'
+                    break;
+                default:
+                    break;
+            }
+        }
+    </script>
+</body>
+</html>
