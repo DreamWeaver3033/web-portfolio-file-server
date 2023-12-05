@@ -67,6 +67,7 @@ app.get('/browse', async (req, res) => {
                 <source src="/files/${fileUrlPath}" type="video/mp4">
                 Your browser does not support the video tag.
             </video>
+            <a href="/files/${fileUrlPath}" class="custom-button" type="submit">${file.name}</a>
         ` :
         `
             <a href="/files/${fileUrlPath}" class="custom-button" type="submit">${file.name}</a>
