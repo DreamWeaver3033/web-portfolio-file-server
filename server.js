@@ -49,25 +49,31 @@ app.get('/browse', async (req, res) => {
     const fileUrlPath = path.join(queryPath, file.name);
 
     listItems += `
-        <li>
-        <style>
-        a {
-          display: block;
-          margin-bottom: 2px;
-        }
-        </style>
-        ${file.isDirectory() ? 
-            `<form action="/browse" method="get">
-                <input type="hidden" name="path" value="${fileUrlPath}">
-                <button class="custom-button" type="submit">${file.name}/</button>
-            </form>` :
-            `
-              <a href="/files/${fileUrlPath}" class="custom-button" type="submit">${file.name}</a>
-            `
-
-        }
-        </li>
-    `;
+    <li>
+    <style>
+    a {
+        display: block;
+        margin-bottom: 2px;
+    }
+    </style>
+    ${file.isDirectory() ? 
+        `<form action="/browse" method="get">
+            <input type="hidden" name="path" value="${fileUrlPath}">
+            <button class="custom-button" type="submit">${file.name}/</button>
+        </form>` :
+        (file.name.endsWith('.mp4') || file.name.endsWith('.mkv')) ?
+        `
+            <video width="320" height="240" controls>
+                <source src="/files/${fileUrlPath}" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        ` :
+        `
+            <a href="/files/${fileUrlPath}" class="custom-button" type="submit">${file.name}</a>
+        `
+    }
+    </li>
+`;
 
     }
 
