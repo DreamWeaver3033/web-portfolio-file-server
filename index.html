@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Myles Weaver</title>
     
@@ -51,6 +52,13 @@
         .minimizeButton {
             display: none; /* Initially hide the button */
         }
+
+        .custom-alert {
+            font-size: 20px;
+            background-color: #051b11;
+            color: #75b798;
+        }
+        
     </style>
 </head>
 
@@ -61,10 +69,12 @@
         <button class="minimizeButton" onclick="buttonClicked(4)">File Server</button>
     </div>
     
-        <h1>Myles Weaver</h1>
-        <button onclick="buttonClicked(1)">LinkedIn</button>
-        <button onclick="buttonClicked(2)">GitHub</button>
-        <button onclick="buttonClicked(3)">VSCO</button>
+        <div class="alert alert-success custom-alert" role="alert">
+            Myles Weaver
+        </div>
+        <button onclick="buttonClicked(1)" type="button" class="btn btn-outline-info">LinkedIn</button>
+        <button onclick="buttonClicked(2)" type="button" class="btn btn-outline-info">GitHub</button>
+        <button onclick="buttonClicked(3)" type="button" class="btn btn-outline-info">VSCO</button>
     
 
     <script>
