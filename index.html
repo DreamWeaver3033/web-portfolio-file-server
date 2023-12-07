@@ -2,13 +2,13 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Myles Weaver</title>
     
     <style>
         body {
-            background-color: #242323;
+            background-color: #1b1b1b;
             color: #ccc;
             display: flex;
             flex-direction: column;
@@ -38,76 +38,66 @@
             background-color: #7902c9;
         }
 
-        #aboutMeContainer {
+        .card{
+            background-color:#242323;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .dropdown{
             position: absolute;
             top: 20px;
             left: 20px;
-            background-color: #0000009d;
-            box-sizing: border-box;
-            border-radius: 10px;
             display: flex;
             flex-direction: column;
         }
 
-        .minimizeButton {
-            display: none; /* Initially hide the button */
-        }
-
-        .custom-alert {
-            font-size: 20px;
-            background-color: #051b11;
-            color: #75b798;
+        .dropdown-menu{
+            background-color:#242323;
         }
         
     </style>
 </head>
 
 <body>
-    <div id="aboutMeContainer">
-        <button onclick="toggleAboutMe()">-</button>
-        <button class="minimizeButton" onclick="buttonClicked(5)">About Me</button>
-        <button class="minimizeButton" onclick="buttonClicked(4)">File Server</button>
+    <div class="dropdown">
+        <button class="btn btn-outline-info dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false"></button>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" style="color: #0dcaf0;" href="/about">About Me</a></li>
+          <li><a class="dropdown-item" style="color: #0dcaf0;" href="/browse">File Browser</a></li>
+        </ul>
     </div>
     
-        <div class="alert alert-success custom-alert" role="alert">
-            Myles Weaver
+    <div class="card w-auto p-3">
+        <div class="card-body">
+            <h1 style="color: #0dcaf0;">Myles Weaver</h1>
+            <button onclick="buttonClicked(1)" type="button" class="btn btn-outline-info">LinkedIn</button>
+            <button onclick="buttonClicked(2)" type="button" class="btn btn-outline-info">GitHub</button>
+            <button onclick="buttonClicked(3)" type="button" class="btn btn-outline-info">VSCO</button>
         </div>
-        <button onclick="buttonClicked(1)" type="button" class="btn btn-outline-info">LinkedIn</button>
-        <button onclick="buttonClicked(2)" type="button" class="btn btn-outline-info">GitHub</button>
-        <button onclick="buttonClicked(3)" type="button" class="btn btn-outline-info">VSCO</button>
-    
+    </div>
 
     <script>
-
-    function toggleAboutMe() {
-        var buttons = document.getElementsByClassName("minimizeButton");
-        for (var i = 0; i < buttons.length; i++) {
-            buttons[i].style.display = buttons[i].style.display === "block" ? "none" : "block";
-        }
-    }
-
-        function buttonClicked(buttonNumber) {
-            console.log("Button " + buttonNumber + " clicked");
-            switch(buttonNumber){
-                case 1:
-                    window.location.href = 'https://www.linkedin.com/in/myles-weaver-247403196/'
-                    break;
-                case 2:
-                    window.location.href = 'https://github.com/DreamWeaver3033'
-                    break;
-                case 3: 
-                    window.location.href = 'https://vsco.co/myles-weaver/gallery'
-                    break;
-                case 4: 
-                    window.location.href = '/browse'
-                    break;
-                case 5:
-                    window.location.href = '/about'
-                    break;
-                default:
-                    break;
+            function buttonClicked(buttonNumber) {
+                console.log("Button " + buttonNumber + " clicked");
+                switch(buttonNumber){
+                    case 1:
+                        window.location.href = 'https://www.linkedin.com/in/myles-weaver-247403196/'
+                        break;
+                    case 2:
+                        window.location.href = 'https://github.com/DreamWeaver3033'
+                        break;
+                    case 3: 
+                        window.location.href = 'https://vsco.co/myles-weaver/gallery'
+                        break;
+                    default:
+                        break;
+                }
             }
-        }
     </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
+    
 </body>
 </html>
