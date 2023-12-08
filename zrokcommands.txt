@@ -1,5 +1,5 @@
 to reserve:
 zrok reserve public http://localhost:8080
-it will create a token: yzxljmsp84ve
+it will create a token: wwxzf70hicel
 to run:
-zrok share reserved yzxljmsp84ve
+zrok share reserved wwxzf70hicel
