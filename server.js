@@ -59,7 +59,7 @@ app.get('/browse', async (req, res) => {
     ${file.isDirectory() ? 
         `<form action="/browse" method="get">
             <input type="hidden" name="path" value="${fileUrlPath}">
-            <button class="custom-button" type="submit">${file.name}/</button>
+            <button class="btn btn-outline-info border-2" type="submit">${file.name}/</button>
         </form>` :
         (file.name.endsWith('.mp4') || file.name.endsWith('.mkv')) ?
         `
@@ -67,10 +67,10 @@ app.get('/browse', async (req, res) => {
                 <source src="/files/${fileUrlPath}" type="video/mp4">
                 Your browser does not support the video tag.
             </video>
-            <a href="/files/${fileUrlPath}" class="custom-button" type="submit">${file.name}</a>
+            <a href="/files/${fileUrlPath}" class="btn btn-outline-info border-2" type="submit">${file.name}</a>
         ` :
         `
-            <a href="/files/${fileUrlPath}" class="custom-button" type="submit">${file.name}</a>
+            <a href="/files/${fileUrlPath}" class="btn btn-outline-info border-2" type="submit">${file.name}</a>
         `
     }
     </li>
@@ -83,6 +83,8 @@ app.get('/browse', async (req, res) => {
     <html lang="en">
     <head>
       <meta charset="UTF-8">
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+      <link rel="stylesheet" href="index.css">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <style>
         ul {
@@ -91,16 +93,6 @@ app.get('/browse', async (req, res) => {
           display: flex; /* Use flexbox */
           flex-direction: column; /* Arrange items in a column */
           align-items: center; /* Center items vertically */
-        }
-        body {
-          background-color: #333;
-          color: #ccc;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          justify-content: center;
-          height: 100vh;
-          margin: 0;
         }
         .custom-button {
           margin: 2px;
