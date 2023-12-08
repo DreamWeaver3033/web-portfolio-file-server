@@ -59,7 +59,7 @@ app.get('/browse', async (req, res) => {
     ${file.isDirectory() ? 
         `<form action="/browse" method="get">
             <input type="hidden" name="path" value="${fileUrlPath}">
-            <button class="btn btn-outline-info border-2" type="submit">${file.name}/</button>
+            <button class="btn btn-outline-info border-2" type="submit" style="margin-bottom:6px;">${file.name}/</button>
         </form>` :
         /*(file.name.endsWith('.mp4') || file.name.endsWith('.mkv')) ?
         `
@@ -70,7 +70,7 @@ app.get('/browse', async (req, res) => {
             <a href="/files/${fileUrlPath}" class="btn btn-outline-info border-2" type="submit">${file.name}</a>
         ` :*/
         `
-            <a href="/files/${fileUrlPath}" class="btn btn-outline-info border-2" type="submit">${file.name}</a>
+            <a href="/files/${fileUrlPath}" class="btn btn-outline-info border-2" type="submit" style="margin-bottom:6px;">${file.name}</a>
         `
     }
     </li>
@@ -93,17 +93,6 @@ app.get('/browse', async (req, res) => {
           display: flex; /* Use flexbox */
           flex-direction: column; /* Arrange items in a column */
           align-items: center; /* Center items vertically */
-        }
-        .custom-button {
-          margin: 2px;
-          padding: 3px 10px;
-          background-color: #7902c9;
-          color: white;
-          border: none;
-          border-radius: 5px;
-          cursor: pointer;
-          transition: background-color 0.3s ease;
-          text-align: center;
         }
       </style>
     </head>
