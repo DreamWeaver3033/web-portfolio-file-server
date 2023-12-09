@@ -137,7 +137,7 @@ app.get('/shared', async (req, res) => {
   }
   </style>
   ${file.isDirectory() ? 
-      `<form action="/browse" method="get">
+      `<form action="/shared" method="get">
           <input type="hidden" name="path" value="${fileUrlPath}">
           <button class="btn btn-outline-info border-2" type="submit" style="margin-bottom:6px;">${file.name}/</button>
       </form>` :
@@ -150,7 +150,7 @@ app.get('/shared', async (req, res) => {
           <a href="/files/${fileUrlPath}" class="btn btn-outline-info border-2" type="submit">${file.name}</a>
       ` :*/
       `
-          <a href="/files/${fileUrlPath}" class="btn btn-outline-info border-2" type="submit" style="margin-bottom:6px;">${file.name}</a>
+          <a href="/sharedf/${fileUrlPath}" class="btn btn-outline-info border-2" type="submit" style="margin-bottom:6px;">${file.name}</a>
       `
   }
   </li>
@@ -197,6 +197,21 @@ app.get('/shared', async (req, res) => {
     
     const decodedUrl = decodeURI(fileUrl);
     const root = path.resolve(__dirname, '..');
+    const fullPath = path.join(root, decodedUrl);
+    console.log(decodedUrl);
+    res.download(fullPath);
+  
+  });
+
+  app.get('/sharedf*', async (req, res) => {
+
+    
+  
+    const fileUrl = req.path.replace('/sharedf', '');
+
+    
+    const decodedUrl = decodeURI(fileUrl);
+    const root = path.resolve(__dirname, 'shared');
     const fullPath = path.join(root, decodedUrl);
     console.log(decodedUrl);
     res.download(fullPath);
