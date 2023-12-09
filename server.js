@@ -9,6 +9,7 @@ const port = 8080;
 
 
 app.use(express.static('public'));
+app.set('trust proxy', true)
 
 app.get('//', (req, res) => {
   res.sendFile(path.join(__dirname, 'index.html'));
@@ -199,6 +200,7 @@ app.get('/shared', async (req, res) => {
     const root = path.resolve(__dirname, '..');
     const fullPath = path.join(root, decodedUrl);
     console.log(decodedUrl);
+    console.log(req.ip);
     res.download(fullPath);
   
   });
