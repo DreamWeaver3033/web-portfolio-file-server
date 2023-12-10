@@ -62,14 +62,14 @@ app.get('/browse', async (req, res) => {
             <input type="hidden" name="path" value="${fileUrlPath}">
             <button class="btn btn-outline-info border-2" type="submit" style="margin-bottom:6px;">${file.name}/</button>
         </form>` :
-        (file.name.endsWith('.mp4') || file.name.endsWith('.mkv')) ?
+        /*(file.name.endsWith('.mp4') || file.name.endsWith('.mkv')) ?
         `
             <video width="320" height="240" controls>
                 <source src="/files/${fileUrlPath}" type="video/mp4">
                 Your browser does not support the video tag.
             </video>
             <a href="/files/${fileUrlPath}" class="btn btn-outline-info border-2" type="submit">${file.name}</a>
-        ` :
+        ` :*/
         `
             <a href="/files/${fileUrlPath}" class="btn btn-outline-info border-2" type="submit" style="margin-bottom:6px;">${file.name}</a>
         `
