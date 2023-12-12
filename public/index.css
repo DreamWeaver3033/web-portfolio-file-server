@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk&display=swap');
+
 body {
     background-color: #0b0b0b;
     color: #ccc;
@@ -7,6 +9,7 @@ body {
     justify-content: center;
     height: 100vh;
     margin: 0;
+    font-family: 'Space Grotesk', sans-serif;
 }
 
 h1 {
@@ -31,3 +34,18 @@ h1 {
 .dropdown-menu{
     background-color:#242323;
 }
+
+.glow {
+    -webkit-animation: glow 3s ease-in-out infinite alternate;
+    -moz-animation: glow 3s ease-in-out infinite alternate;
+    animation: glow 3s ease-in-out infinite alternate;
+  }
+  
+  @-webkit-keyframes glow {
+    from {
+      text-shadow: 0 0 10px hsl(205, 100%, 60%), 0 0 20px hsl(205, 100%, 40%), 0 0 30px hsl(205, 100%, 40%), 0 0 40px hsl(205, 100%, 40%);
+    }
+    to {
+      text-shadow: 0 0 20px hsl(205, 100%, 40%), 0 0 30px hsl(205, 100%, 40%);
+    }
+  }

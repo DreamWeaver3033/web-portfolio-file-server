@@ -99,7 +99,7 @@ app.get('/browse', async (req, res) => {
     </head>
     <body>
       <h1 style="font-family: 'Ubuntu', sans-serif">
-      Myles' File Server
+      mCloud
       </h1>
       <ul>
         ${listItems}  
@@ -179,7 +179,7 @@ app.get('/shared', async (req, res) => {
   </head>
   <body>
     <h1 style="font-family: 'Ubuntu', sans-serif">
-    Myles' File Server
+    mCloud
     </h1>
     <ul>
       ${listItems}  
