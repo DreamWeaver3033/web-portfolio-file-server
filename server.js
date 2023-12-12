@@ -98,7 +98,7 @@ app.get('/browse', async (req, res) => {
       </style>
     </head>
     <body>
-      <h1 style="font-family: 'Ubuntu', sans-serif">
+      <h1 class="glow">
       mCloud
       </h1>
       <ul>
@@ -178,7 +178,7 @@ app.get('/shared', async (req, res) => {
     </style>
   </head>
   <body>
-    <h1 style="font-family: 'Ubuntu', sans-serif">
+    <h1 class="glow">
     mCloud
     </h1>
     <ul>

@@ -36,6 +36,7 @@ h1 {
 }
 
 .glow {
+    color: #0dcaf0;
     -webkit-animation: glow 3s ease-in-out infinite alternate;
     -moz-animation: glow 3s ease-in-out infinite alternate;
     animation: glow 3s ease-in-out infinite alternate;
