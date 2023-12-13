@@ -43,7 +43,12 @@ app.get('/browse', async (req, res) => {
     const files = await fs.readdir(fullPath, { withFileTypes: true });
   
     // Render HTML with files and folders
-    let listItems = '';
+    
+    const parentPath = path.dirname(queryPath);
+    let listItems = ``;
+    if(queryPath!=='' && queryPath !== '.'){
+       listItems = `<a href="/browse?path=${parentPath}" class="btn btn-outline-info border-2" style="margin-bottom:6px;">&larr; Back</a>`;
+    }
 
     for (let file of files) {
 
