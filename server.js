@@ -79,6 +79,10 @@ app.get('/browse', async (req, res) => {
       <link rel="stylesheet" href="index.css">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <style>
+        body{
+          font-family:  sans-serif;
+        }
+
         ul {
           list-style-type: none; /* Remove bullets from the list */
           padding: 0; /* Remove default padding for the list */
@@ -209,7 +213,7 @@ app.get('/shared', async (req, res) => {
   </head>
   <body>
   
-    <a href="/browse?path=" class="glow">
+    <a href="/shared?path=" class="glow">
     mCloud
     </a>
     <ul>
