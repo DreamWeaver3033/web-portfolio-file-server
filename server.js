@@ -56,25 +56,11 @@ app.get('/browse', async (req, res) => {
 
     listItems += `
     <li>
-    <style>
-    a {
-        display: block;
-        margin-bottom: 2px;
-    }
-    </style>
     ${file.isDirectory() ? 
-        `<form action="/browse" method="get">
-            <input type="hidden" name="path" value="${fileUrlPath}">
+        `<form action="/browse" method="get" >
+            <input type="hidden" name="path" value="${fileUrlPath}" >
             <button class="btn btn-outline-info border-2" type="submit" style="margin-bottom:6px;">${file.name}/</button>
         </form>` :
-        /*(file.name.endsWith('.mp4') || file.name.endsWith('.mkv')) ?
-        `
-            <video width="320" height="240" controls>
-                <source src="/files/${fileUrlPath}" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
-            <a href="/files/${fileUrlPath}" class="btn btn-outline-info border-2" type="submit">${file.name}</a>
-        ` :*/
         `
             <a href="/files/${fileUrlPath}" class="btn btn-outline-info border-2" type="submit" style="margin-bottom:6px;">${file.name}</a>
         `
@@ -100,12 +86,24 @@ app.get('/browse', async (req, res) => {
           flex-direction: column; /* Arrange items in a column */
           align-items: center; /* Center items vertically */
         }
+
+        ul li {
+          flex: 1;
+          margin: 0;
+          width: 100%;
+        }
+        .btn {
+          width: 100%;
+        }
+        button {
+          width: 100%;
+        }
       </style>
     </head>
     <body>
-      <h1 class="glow">
+      <a href="/browse?path=" class="glow">
       mCloud
-      </h1>
+      </a>
       <ul>
         ${listItems}  
       </ul>
@@ -147,14 +145,6 @@ app.get('/shared', async (req, res) => {
           <input type="hidden" name="path" value="${fileUrlPath}">
           <button class="btn btn-outline-info border-2" type="submit" style="margin-bottom:6px;">${file.name}/</button>
       </form>` :
-      /*(file.name.endsWith('.mp4') || file.name.endsWith('.mkv')) ?
-      `
-          <video width="320" height="240" controls>
-              <source src="/files/${fileUrlPath}" type="video/mp4">
-              Your browser does not support the video tag.
-          </video>
-          <a href="/files/${fileUrlPath}" class="btn btn-outline-info border-2" type="submit">${file.name}</a>
-      ` :*/
       `
           <a href="/sharedf/${fileUrlPath}" class="btn btn-outline-info border-2" type="submit" style="margin-bottom:6px;">${file.name}</a>
       `
@@ -180,12 +170,24 @@ app.get('/shared', async (req, res) => {
         flex-direction: column; /* Arrange items in a column */
         align-items: center; /* Center items vertically */
       }
+
+      ul li {
+        flex: 1;
+        margin: 0;
+        width: 100%;
+      }
+      .btn {
+        width: 100%;
+      }
+      button {
+        width: 100%;
+      }
     </style>
   </head>
   <body>
-    <h1 class="glow">
+    <a href="/browse?path=" class="glow">
     mCloud
-    </h1>
+    </a>
     <ul>
       ${listItems}  
     </ul>

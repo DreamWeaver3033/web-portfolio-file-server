@@ -16,6 +16,10 @@ h1 {
     font-size: 20px;
     margin-bottom: 10px;
 }
+a {
+  font-size: 20px;
+  text-decoration: none;
+}
 
 .card{
     background-color:#151515;
@@ -29,6 +33,10 @@ h1 {
     left: 20px;
     display: flex;
     flex-direction: column;
+}
+
+.dropdown-item{
+  font-size:16px;
 }
 
 .dropdown-menu{
