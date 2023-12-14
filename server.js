@@ -160,9 +160,7 @@ app.get('/shared', async (req, res) => {
       </form>` :
       (file.name.endsWith('.JPG')) ?
       `
-          <img>
-              <source src="/files/${fileUrlPath}">
-          </img>
+          <img src="/files/${fileUrlPath}">
           `//<a href="/files/${fileUrlPath}" class="btn btn-outline-info border-2" type="submit">${file.name}</a>
        :
       `
