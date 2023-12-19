@@ -14,18 +14,20 @@
         <button class="btn btn-outline-info dropdown-toggle border-2" type="button" data-bs-toggle="dropdown" aria-expanded="false"></button>
         <ul class="dropdown-menu">
           <li><a class="dropdown-item" style="color: #0dcaf0;" href="/">Home</a></li>
-          <li><a class="dropdown-item" style="color: #0dcaf0;" href="/about">About Me</a></li>
           <li><a class="dropdown-item" style="color: #0dcaf0;" href="/browse">File Browser</a></li>
           <li><a class="dropdown-item" style="color: #0dcaf0;" href="/shared">Public File List</a></li>
         </ul>
     </div>
     
     <div class="card w-auto p-3">
-        <div class="card-body">
-            <h1 class="glow">myles weaver</h1>
-            <button onclick="buttonClicked(1)" type="button" class="btn btn-outline-info border-2">LinkedIn</button>
-            <button onclick="buttonClicked(2)" type="button" class="btn btn-outline-info border-2">GitHub</button>
-            <button onclick="buttonClicked(3)" type="button" class="btn btn-outline-info border-2">VSCO</button>
+        <h1 class="glow">myles weaver</h1>
+        <div class="card-body" style="padding-bottom: 2%;">
+            <button onclick="buttonClicked(1)" type="button" class="btn btn-outline-info border-2" style="width: 100px;">LinkedIn</button>
+            <button onclick="buttonClicked(2)" type="button" class="btn btn-outline-info border-2" style="width: 100px;">GitHub</button>
+            <button onclick="buttonClicked(3)" type="button" class="btn btn-outline-info border-2" style="width: 100px;">VSCO</button>
+        </div>
+        <div class="card-body" style="padding-top: 0%;">
+            <button onclick="buttonClicked(4)" type="button" class="btn btn-outline-info border-2" style="width: 100px;">Resume</button>
         </div>
     </div>
 
@@ -41,6 +43,9 @@
                         break;
                     case 3: 
                         window.location.href = 'https://vsco.co/myles-weaver/gallery'
+                        break;
+                    case 4: 
+                        window.location.href = '/about'
                         break;
                     default:
                         break;
