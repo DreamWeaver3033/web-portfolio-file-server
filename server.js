@@ -29,6 +29,12 @@ app.use('/browse', basicAuth({
   unauthorizedResponse: 'Unauthorized access'
 }));
 
+app.use('/mega', basicAuth({
+  users,
+  challenge: true,
+  unauthorizedResponse: 'Unauthorized access'
+}));
+
 app.get('/browse', async (req, res) => {
 
     // Root folder to start from 
@@ -127,6 +133,61 @@ app.get('/browse', async (req, res) => {
     </body>
     </html>
   `);
+});
+
+app.get('/mega', async (req,res) => {
+  res.send(`
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="index.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+      ul {
+        list-style-type: none; /* Remove bullets from the list */
+        padding: 0; /* Remove default padding for the list */
+        display: flex; /* Use flexbox */
+        flex-direction: column; /* Arrange items in a column */
+        align-items: center; /* Center items vertically */
+      }
+
+      ul li {
+        flex: 1;
+        margin: 0;
+        width: 100%;
+      }
+      .btn {
+        width: 100%;
+      }
+      button {
+        width: 100%;
+      }
+    </style>
+
+    <div class="dropdown">
+        <button class="btn btn-outline-info dropdown-toggle border-2" type="button" data-bs-toggle="dropdown" aria-expanded="false"></button>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" style="color: #0dcaf0;" href="/">Home</a></li>
+          <li><a class="dropdown-item" style="color: #0dcaf0;" href="/about">About Me</a></li>
+          <li><a class="dropdown-item" style="color: #0dcaf0;" href="/browse">File Browser</a></li>
+          <li><a class="dropdown-item" style="color: #0dcaf0;" href="/shared">Public File List</a></li>
+        </ul>
+    </div>
+  </head>
+  <body>
+  
+    <a  class="glow">
+    mCloud
+    </a>
+    <a href="https://mega.nz/folder/gV9lBAKZ#0W9mCLOuMr8b6ZU6A-90tQ" class="btn btn-outline-info border-2 w-25" type="submit" style="margin-bottom:6px;">Mega Link</a>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
+  </body>
+  </html>
+`);
 });
 
 app.get('/shared', async (req, res) => {
