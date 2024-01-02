@@ -22,6 +22,8 @@ const users = {
   [process.env.MYUSER]: process.env.MYPASS
 };
 
+const megaLink = process.env.MEGA;
+
 // Use basic authentication middleware
 app.use('/browse', basicAuth({
   users,
@@ -181,7 +183,7 @@ app.get('/mega', async (req,res) => {
     <a  class="glow">
     mCloud
     </a>
-    <a href="https://mega.nz/folder/gV9lBAKZ#0W9mCLOuMr8b6ZU6A-90tQ" class="btn btn-outline-info border-2 w-25" type="submit" style="margin-bottom:6px;">Mega Link</a>
+    <a href=${megaLink} class="btn btn-outline-info border-2 w-25" type="submit" style="margin-bottom:6px;">Mega Link</a>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
