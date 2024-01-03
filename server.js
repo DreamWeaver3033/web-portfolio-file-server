@@ -118,7 +118,7 @@ app.get('/browse', async (req, res) => {
         <ul class="dropdown-menu">
           <li><a class="dropdown-item" style="color: #0dcaf0;" href="/">Home</a></li>
           <li><a class="dropdown-item" style="color: #0dcaf0;" href="/about">About Me</a></li>
-          <li><a class="dropdown-item" style="color: #0dcaf0;" href="/browse">File Browser</a></li>
+          <li><a class="dropdown-item" style="color: #0dcaf0;" href="/mega">File Browser</a></li>
           <li><a class="dropdown-item" style="color: #0dcaf0;" href="/shared">Public File List</a></li>
         </ul>
     </div>
