@@ -32,7 +32,7 @@ app.use('/browse', basicAuth({
   unauthorizedResponse: 'Unauthorized access'
 }));
 
-app.use('//mega', basicAuth({
+app.use('/mega', basicAuth({
   users,
   challenge: true,
   unauthorizedResponse: 'Unauthorized access'
@@ -137,7 +137,7 @@ app.get('/browse', async (req, res) => {
   `);
 });
 
-app.get('//mega', async (req,res) => {
+app.get('/mega', async (req,res) => {
   res.send(`
   <!DOCTYPE html>
   <html lang="en">
@@ -172,8 +172,6 @@ app.get('//mega', async (req,res) => {
         <button class="btn btn-outline-info dropdown-toggle border-2" type="button" data-bs-toggle="dropdown" aria-expanded="false"></button>
         <ul class="dropdown-menu">
           <li><a class="dropdown-item" style="color: #0dcaf0;" href="/">Home</a></li>
-          <li><a class="dropdown-item" style="color: #0dcaf0;" href="/about">About Me</a></li>
-          <li><a class="dropdown-item" style="color: #0dcaf0;" href="/browse">File Browser</a></li>
           <li><a class="dropdown-item" style="color: #0dcaf0;" href="/shared">Public File List</a></li>
         </ul>
     </div>
@@ -274,9 +272,7 @@ app.get('/shared', async (req, res) => {
         <button class="btn btn-outline-info dropdown-toggle border-2" type="button" data-bs-toggle="dropdown" aria-expanded="false"></button>
         <ul class="dropdown-menu">
           <li><a class="dropdown-item" style="color: #0dcaf0;" href="/">Home</a></li>
-          <li><a class="dropdown-item" style="color: #0dcaf0;" href="/about">About Me</a></li>
-          <li><a class="dropdown-item" style="color: #0dcaf0;" href="/browse">File Browser</a></li>
-          <li><a class="dropdown-item" style="color: #0dcaf0;" href="/shared">Public File List</a></li>
+          <li><a class="dropdown-item" style="color: #0dcaf0;" href="/mega">File Browser</a></li>
         </ul>
     </div>
   </head>
