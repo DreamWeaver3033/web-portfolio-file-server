@@ -32,7 +32,7 @@ app.use('/browse', basicAuth({
   unauthorizedResponse: 'Unauthorized access'
 }));
 
-app.use('/mega', basicAuth({
+app.use('//mega', basicAuth({
   users,
   challenge: true,
   unauthorizedResponse: 'Unauthorized access'
@@ -138,7 +138,7 @@ app.get('/browse', async (req, res) => {
   `);
 });
 
-app.get('/mega', async (req,res) => {
+app.get('//mega', async (req,res) => {
   res.send(`
   <!DOCTYPE html>
   <html lang="en">
