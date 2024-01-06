@@ -117,7 +117,6 @@ app.get('/browse', async (req, res) => {
         <button class="btn btn-outline-info dropdown-toggle border-2" type="button" data-bs-toggle="dropdown" aria-expanded="false"></button>
         <ul class="dropdown-menu">
           <li><a class="dropdown-item" style="color: #0dcaf0;" href="/">Home</a></li>
-          <li><a class="dropdown-item" style="color: #0dcaf0;" href="/about">About Me</a></li>
           <li><a class="dropdown-item" style="color: #0dcaf0;" href="/mega">File Browser</a></li>
           <li><a class="dropdown-item" style="color: #0dcaf0;" href="/shared">Public File List</a></li>
         </ul>
