@@ -138,6 +138,7 @@ app.use('/mega', basicAuth({
 // });
 
 app.get('/mega', async (req,res) => {
+  console.log(req.ip);
   res.send(`
   <!DOCTYPE html>
   <html lang="en">
