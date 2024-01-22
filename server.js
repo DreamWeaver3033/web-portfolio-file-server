@@ -234,16 +234,12 @@ app.get('/gallery', async (req, res) => {
   
     listItems += `
     <li>
-    <style>
-    a {
-        display: block;
-        margin-bottom: 2px;
-    }
-    </style>
     ${file.isDirectory() ? 
         `` :
         `
-            <img src="/gallery/${fileUrlPath}" />${fileUrlPath}</img>
+        <div class="image-wrapper">
+          <img src="/gallery/${fileUrlPath}">
+        </div>
         `
     }
     </li>
@@ -260,25 +256,22 @@ app.get('/gallery', async (req, res) => {
     <link rel="stylesheet" href="index.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
-      ul {
-        list-style-type: none; /* Remove bullets from the list */
-        padding: 0; /* Remove default padding for the list */
-        display: flex; /* Use flexbox */
-        flex-direction: column; /* Arrange items in a column */
-        align-items: center; /* Center items vertically */
+    ul {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-gap: 10px;
+    }
+    
+      .image-wrapper {
+        max-width: 200px; 
+        margin: 5px;
       }
-
-      ul li {
-        flex: 1;
-        margin: 0;
+    
+      .image-wrapper img {
         width: 100%;
+        height: auto;
       }
-      .btn {
-        width: 100%;
-      }
-      button {
-        width: 100%;
-      }
+      
     </style>
 
     <div class="dropdown">
@@ -290,10 +283,6 @@ app.get('/gallery', async (req, res) => {
     </div>
   </head>
   <body>
-  
-    <a href="/shared?path=" class="glow">
-    mCloud
-    </a>
     <ul>
       ${listItems}  
     </ul>
