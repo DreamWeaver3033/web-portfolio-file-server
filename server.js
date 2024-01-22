@@ -202,48 +202,109 @@ app.get('/sharedf*', async (req, res) => {
 
 });
 
+app.get('/gallery*', async (req, res) => {
 
-app.get('/gallery', async (req, res) => {
-  try{
-  // Get the gallery folder path
-  const dir = path.join(__dirname, 'gallery');
+  
 
-  // Read files in the folder
-  fs.readdir(dir, (err, files) => {
-    if (err) {
-      return res.status(500).send('Unable to scan files!');
-    } 
+  const fileUrl = req.path.replace('/gallery', '');
 
-    // Filter to only get image files
-    const images = files.filter(file => {
-      const ext = path.extname(file);
-      return ext === '.png' || ext === '.jpg';
-    });
-
-    // Render view with gallery images 
-    let html = `
-    <h1>My Gallery</h1>
-    <div class="gallery">
-  `;
-
-  images.forEach(image => {
-    html += `
-      <img src="/gallery/${image}" />
-    `;
-  });
-
-  html += `
-    </div>
-  `;
-
-  res.send(html);
-  });}
-  catch(err){
-    console.log(err);
-  }
+  
+  const decodedUrl = decodeURI(fileUrl);
+  const root = path.resolve(__dirname, 'gal');
+  const fullPath = path.join(root, decodedUrl);
+  console.log(decodedUrl);
+  res.download(fullPath);
 
 });
-app.use('/gallery', express.static('gallery'));
+
+
+app.get('/gallery', async (req, res) => {
+  const root = path.resolve(__dirname, 'gal');
+  
+  // Get current browse path
+  // Get current browse path
+  const queryPath = req.query.path || ''; 
+  const fullPath = path.join(root, queryPath);
+
+  const files = await fs.readdir(fullPath, { withFileTypes: true });
+  let listItems = '';
+  
+  for (let file of files) {
+    const fileUrlPath = path.join(queryPath, file.name);
+  
+    listItems += `
+    <li>
+    <style>
+    a {
+        display: block;
+        margin-bottom: 2px;
+    }
+    </style>
+    ${file.isDirectory() ? 
+        `` :
+        `
+            <img src="/gallery/${fileUrlPath}" />${fileUrlPath}</img>
+        `
+    }
+    </li>
+  `;
+  
+    }
+
+    res.send(`
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="index.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+      ul {
+        list-style-type: none; /* Remove bullets from the list */
+        padding: 0; /* Remove default padding for the list */
+        display: flex; /* Use flexbox */
+        flex-direction: column; /* Arrange items in a column */
+        align-items: center; /* Center items vertically */
+      }
+
+      ul li {
+        flex: 1;
+        margin: 0;
+        width: 100%;
+      }
+      .btn {
+        width: 100%;
+      }
+      button {
+        width: 100%;
+      }
+    </style>
+
+    <div class="dropdown">
+        <button class="btn btn-outline-info dropdown-toggle border-2" type="button" data-bs-toggle="dropdown" aria-expanded="false"></button>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" style="color: #0dcaf0;" href="/">Home</a></li>
+          <li><a class="dropdown-item" style="color: #0dcaf0;" href="/mega">File Browser</a></li>
+        </ul>
+    </div>
+  </head>
+  <body>
+  
+    <a href="/shared?path=" class="glow">
+    mCloud
+    </a>
+    <ul>
+      ${listItems}  
+    </ul>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
+  </body>
+  </html>
+`);
+
+});
 
 
 app.listen(port, () => {
