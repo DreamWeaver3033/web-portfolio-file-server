@@ -10,7 +10,9 @@ body {
     height: 100vh;
     margin: 0;
     font-family: 'Space Grotesk', sans-serif;
+    overflow-y: scroll;
 }
+
 
 h1 {
     font-size: 20px;
