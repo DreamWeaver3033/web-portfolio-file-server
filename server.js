@@ -260,17 +260,23 @@ app.get('/gallery', async (req, res) => {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       grid-gap: 10px;
+      list-style-type: none;
     }
     
       .image-wrapper {
         max-width: 200px; 
-        margin: 5px;
+        margin: 5px;  
       }
     
       .image-wrapper img {
         width: 100%;
         height: auto;
       }
+    
+      dl, ol, ul {
+        margin-top: 70vh;
+        margin-bottom: 1rem;
+    }
       
     </style>
 
