@@ -198,7 +198,6 @@ app.get('/sharedf*', async (req, res) => {
   const decodedUrl = decodeURI(fileUrl);
   const root = path.resolve(__dirname, 'shared');
   const fullPath = path.join(root, decodedUrl);
-  console.log(decodedUrl);
   res.download(fullPath);
 
 });
@@ -213,7 +212,6 @@ app.get('/gallery*', async (req, res) => {
   const decodedUrl = decodeURI(fileUrl);
   const root = path.resolve(__dirname, 'gal');
   const fullPath = path.join(root, decodedUrl);
-  console.log(decodedUrl);
   res.download(fullPath);
 
 });
@@ -244,7 +242,6 @@ app.get('/gallery', async (req, res) => {
   
   for (let file of newFiles) {
     const fileUrlPath = path.join(queryPath, file.name.name);
-    console.log(fileUrlPath);
   
     listItems += `
     <li>
