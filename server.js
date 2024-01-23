@@ -261,6 +261,9 @@ app.get('/gallery', async (req, res) => {
     <link rel="stylesheet" href="index.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
+    body{
+      height: 100%;
+    }
     ul {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
@@ -279,7 +282,7 @@ app.get('/gallery', async (req, res) => {
       }
     
       dl, ol, ul {
-        margin-top: 70vh;
+        margin-top: 10vh;
         margin-bottom: 1rem;
     }
       
