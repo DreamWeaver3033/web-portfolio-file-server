@@ -1,5 +1,6 @@
 const express = require('express');
 const path = require('path');
+const sharp = require('sharp');
 const fs = require('fs').promises; // Use promises for fs operations
 const basicAuth = require('express-basic-auth'); // Import express-basic-auth
 const dotenv = require('dotenv').config({ path: path.join(__dirname, '..', '.env') });
@@ -228,23 +229,30 @@ app.get('/gallery', async (req, res) => {
 
   const files = await fs.readdir(fullPath, { withFileTypes: true });
   let listItems = '';
+  let newFiles = [];
+
+  for (let i = 0; i < files.length; i++) {
+    let currentp = path.join(root, files[i].name);
+
+    newFiles.push({
+      name: files[i],
+      buffer:await sharp(currentp)
+      .resize({ width: 300 }) // Adjust the width as needed
+      .toBuffer(),
+    });
+  }
   
-  for (let file of files) {
-    const fileUrlPath = path.join(queryPath, file.name);
+  for (let file of newFiles) {
+    const fileUrlPath = path.join(queryPath, file.name.name);
+    console.log(fileUrlPath);
   
     listItems += `
     <li>
-    ${file.isDirectory() ? 
-        `` :
-        `
         <div class="image-wrapper">
           <img src="/gallery/${fileUrlPath}">
         </div>
-        `
-    }
     </li>
   `;
-  
     }
 
     res.send(`
