@@ -27,6 +27,8 @@ a {
     background-color:#151515;
     align-items: center;
     justify-content: center;
+    min-width: 40vh;
+    height: 35vh;
 }
 
 .dropdown{
