@@ -284,7 +284,12 @@ app.get('/gallery', async (req, res) => {
       dl, ol, ul {
         margin-top: 10vh;
         margin-bottom: 1rem;
-    }
+        margin-right: 3vh;
+        margin-left: 3vh;
+      }
+      ol, ul {
+        padding-left: 0rem;
+      }
       
     </style>
 
