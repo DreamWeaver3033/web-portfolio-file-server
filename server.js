@@ -227,21 +227,9 @@ app.get('/gallery', async (req, res) => {
 
   const files = await fs.readdir(fullPath, { withFileTypes: true });
   let listItems = '';
-  let newFiles = [];
-
-  for (let i = 0; i < files.length; i++) {
-    let currentp = path.join(root, files[i].name);
-
-    newFiles.push({
-      name: files[i],
-      buffer:await sharp(currentp)
-      .resize({ width: 300 }) // Adjust the width as needed
-      .toBuffer(),
-    });
-  }
   
-  for (let file of newFiles) {
-    const fileUrlPath = path.join(queryPath, file.name.name);
+  for (let file of files) {
+    const fileUrlPath = path.join(queryPath, file.name);
   
     listItems += `
     <li>
@@ -266,13 +254,13 @@ app.get('/gallery', async (req, res) => {
     }
     ul {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(2, 1fr);
       grid-gap: 10px;
       list-style-type: none;
     }
     
       .image-wrapper {
-        max-width: 200px; 
+        max-width: 400px; 
         margin: 5px;  
       }
     
