@@ -210,7 +210,7 @@ app.get('/big*', async (req, res) => {
 
   
   const decodedUrl = decodeURI(fileUrl);
-  const root = path.resolve(__dirname, 'uncomp');
+  const root = path.resolve(__dirname, 'gal');
   const fullPath = path.join(root, decodedUrl);
   res.download(fullPath);
 
@@ -221,7 +221,7 @@ app.get('/full*', async (req, res) => {
   let listItems = '';
   
   
-    listItems += `<a href="/gallery"><img src="/gallery/${fileUrlPath}"></a>`;
+    listItems += `<a href="/gallery"><img src="/big/${fileUrlPath}"></a>`;
     
 
     res.send(`
