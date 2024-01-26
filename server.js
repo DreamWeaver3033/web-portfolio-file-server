@@ -221,7 +221,7 @@ app.get('/full*', async (req, res) => {
   let listItems = '';
   
   
-    listItems += `<a href="/gallery"><img src="/big/${fileUrlPath}"></a>`;
+    listItems += `<a href="/gallery"><img src="/gallery/${fileUrlPath}"></a>`;
     
 
     res.send(`
