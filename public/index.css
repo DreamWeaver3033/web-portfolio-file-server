@@ -46,12 +46,36 @@ a {
     background-color:#242323;
 }
 
+.image-wrapper {
+  max-width: 600px; 
+  margin: 5px;  
+}
+.image-wrapper img {
+  width: 100%;
+  height: auto;
+}
+ul {
+  display: grid;
+  list-style-type: none;
+}
+dl, ol, ul {
+  margin-top: 10vh;
+  margin-bottom: 1rem;
+  margin-right: 3vh;
+  margin-left: 3vh;
+}
+ol, ul {
+  padding-left: 0rem;
+}
+
 .glow {
     color: #0dcaf0;
     -webkit-animation: glow 3s ease-in-out infinite alternate;
     -moz-animation: glow 3s ease-in-out infinite alternate;
     animation: glow 3s ease-in-out infinite alternate;
   }
+
+  
   
   @-webkit-keyframes glow {
     from {

@@ -180,7 +180,7 @@ app.get('/shared', async (req, res) => {
     <ul>
       ${listItems}  
     </ul>
-
+    
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
   </body>
@@ -189,93 +189,41 @@ app.get('/shared', async (req, res) => {
 });
 
 app.get('/sharedf*', async (req, res) => {
-
-  
-
   const fileUrl = req.path.replace('/sharedf', '');
-
-  
   const decodedUrl = decodeURI(fileUrl);
   const root = path.resolve(__dirname, 'shared');
   const fullPath = path.join(root, decodedUrl);
   res.download(fullPath);
-
-});
-
-app.get('/big*', async (req, res) => {
-
-  
-
-  const fileUrl = req.path.replace('/big', '');
-
-  
-  const decodedUrl = decodeURI(fileUrl);
-  const root = path.resolve(__dirname, 'gal');
-  const fullPath = path.join(root, decodedUrl);
-  res.download(fullPath);
-
 });
 
 app.get('/full*', async (req, res) => {
   fileUrlPath = req.path.replace('/full/', '')
   let listItems = '';
-  
-  
-    listItems += `<a href="/gallery"><img src="/big/${fileUrlPath}"></a>`;
-    
-
+    listItems += `<a href="/gallery"><img src="/gallery/${fileUrlPath}"></a>`;
     res.send(`
   <!DOCTYPE html>
   <html lang="en">
   <head>
     <meta charset="UTF-8">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://mylesweaver.net/index.css">
+    <link rel="stylesheet" href="http://localhost:8080/index.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-    .image-wrapper {
-      max-width: 600px; 
-      margin: 5px;  
-    }
-    .image-wrapper img {
-      width: 100%;
-      height: auto;
-    }
-    </style>
-
-    <div class="dropdown">
-        <button class="btn btn-outline-info dropdown-toggle border-2" type="button" data-bs-toggle="dropdown" aria-expanded="false"></button>
-        <ul class="dropdown-menu">
-          <li><a class="dropdown-item" style="color: #0dcaf0;" href="/">Home</a></li>
-          <li><a class="dropdown-item" style="color: #0dcaf0;" href="/mega">File Browser</a></li>
-        </ul>
-    </div>
   </head>
   <body>
   <div class="image-wrapper">
       ${listItems}  
-      </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
+  </div>
   </body>
   </html>
 `);
 });
 
 app.get('/gallery*', async (req, res) => {
-
-  
-
   const fileUrl = req.path.replace('/gallery', '');
-
-  
   const decodedUrl = decodeURI(fileUrl);
   const root = path.resolve(__dirname, 'gal');
   const fullPath = path.join(root, decodedUrl);
   res.download(fullPath);
-
 });
-
 
 app.get('/gallery', async (req, res) => {
   const root = path.resolve(__dirname, 'gal');
@@ -311,35 +259,14 @@ app.get('/gallery', async (req, res) => {
     body{
       height: 100%;
     }
-    ul {
-      display: grid;
+    ul{
       grid-template-columns: repeat(2, 1fr);
       grid-gap: 10px;
-      list-style-type: none;
     }
-    
       .image-wrapper {
         max-width: 400px; 
-        margin: 5px;  
       }
-    
-      .image-wrapper img {
-        width: 100%;
-        height: auto;
-      }
-    
-      dl, ol, ul {
-        margin-top: 10vh;
-        margin-bottom: 1rem;
-        margin-right: 3vh;
-        margin-left: 3vh;
-      }
-      ol, ul {
-        padding-left: 0rem;
-      }
-      
     </style>
-
     <div class="dropdown">
         <button class="btn btn-outline-info dropdown-toggle border-2" type="button" data-bs-toggle="dropdown" aria-expanded="false"></button>
         <ul class="dropdown-menu">
@@ -352,7 +279,6 @@ app.get('/gallery', async (req, res) => {
     <ul>
       ${listItems}  
     </ul>
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
   </body>
