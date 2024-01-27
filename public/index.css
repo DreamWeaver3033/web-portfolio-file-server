@@ -54,6 +54,9 @@ a {
   width: 100%;
   height: auto;
 }
+.image-wrapper img:hover{
+  border: 2px solid #92929288;
+}
 ul {
   display: grid;
   list-style-type: none;
