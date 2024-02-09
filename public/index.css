@@ -54,6 +54,15 @@ a {
   width: 100%;
   height: auto;
 }
+.image-full{
+  max-width:600px;
+  margin-bottom:10px;
+}
+
+.image-full img{
+  width:80%;
+  height:auto;
+}
 .image-wrapper img:hover{
   border: 2px solid #92929288;
 }
