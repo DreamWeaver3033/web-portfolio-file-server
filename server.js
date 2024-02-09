@@ -8,14 +8,25 @@ const dotenv = require('dotenv').config({ path: path.join(__dirname, '..', '.env
 const app = express();
 const port = 8080;
 
+function disableCaching(res) {
+  res.header('Cache-Control', 'private, no-cache, no-store, must-revalidate');
+  res.header('Expires', '-1');
+  res.header('Pragma', 'no-cache');
+}
+
+module.exports = disableCaching;
+
 
 app.use(express.static('public'));
 app.set('trust proxy', true)
 
 app.get('//', (req, res) => {
+  disableCaching(res);
+
   res.sendFile(path.join(__dirname, 'index.html'));
 });
 app.get('/about', (req, res) => {
+  disableCaching(res);
   res.sendFile(path.join(__dirname, 'about.html'));
 });
 
@@ -33,6 +44,7 @@ app.use('/mega', basicAuth({
 }));
 
 app.get('/mega', async (req,res) => {
+  disableCaching(res);
   console.log(req.ip);
   res.send(`
   <!DOCTYPE html>
@@ -93,6 +105,7 @@ app.get('/mega', async (req,res) => {
 });
 
 app.get('/shared', async (req, res) => {
+  disableCaching(res);
 
   // Root folder to start from 
   const root = path.resolve(__dirname, 'shared');
@@ -189,6 +202,7 @@ app.get('/shared', async (req, res) => {
 });
 
 app.get('/sharedf*', async (req, res) => {
+  disableCaching(res);
   const fileUrl = req.path.replace('/sharedf', '');
   const decodedUrl = decodeURI(fileUrl);
   const root = path.resolve(__dirname, 'shared');
@@ -197,6 +211,7 @@ app.get('/sharedf*', async (req, res) => {
 });
 
 app.get('/full*', async (req, res) => {
+  disableCaching(res);
   fileUrlPath = req.path.replace('/full/', '')
   let listItems = '';
     listItems += `<a href="/gallery"><img src="/gallery/${fileUrlPath}"></a>`;
@@ -218,6 +233,7 @@ app.get('/full*', async (req, res) => {
 });
 
 app.get('/gallery*', async (req, res) => {
+  disableCaching(res);
   const fileUrl = req.path.replace('/gallery', '');
   const decodedUrl = decodeURI(fileUrl);
   const root = path.resolve(__dirname, 'gal');
@@ -226,6 +242,7 @@ app.get('/gallery*', async (req, res) => {
 });
 
 app.get('/gallery', async (req, res) => {
+  disableCaching(res);
   const root = path.resolve(__dirname, 'gal');
   
   // Get current browse path
