@@ -234,18 +234,29 @@ app.get('/gallery', async (req, res) => {
   const fullPath = path.join(root, queryPath);
 
   const files = await fs.readdir(fullPath, { withFileTypes: true });
-  let listItems = '';
+  let listItems = '<li>';
+  let listItems2 = '<li>'
   
-  for (let file of files) {
+  const filesLength = files.length;
+  for (let i = 0; i < filesLength-1; i++) {
+    const file = files[i];
+    const file2 = files[i+1]
     const fileUrlPath = path.join(queryPath, file.name);
+    const fileUrlPath2 = path.join(queryPath, file2.name);
+    
     listItems += `
-    <li>
         <div class="image-wrapper">
-          <a href="/full/${fileUrlPath}"><img src="/gallery/${fileUrlPath}"></a>
+          <a href="/full/${fileUrlPath}"><img src="/gallery/${fileUrlPath}"></a>  
         </div>
-    </li>
-  `;
-    }
+    `;
+    listItems2 += `
+      <div class="image-wrapper">
+        <a href="/full/${fileUrlPath2}"><img src="/gallery/${fileUrlPath2}"></a>  
+      </div>`
+    i=i+1;
+  }
+  listItems+=`</li>`
+  listItems2+=`</li>`
 
     res.send(`
   <!DOCTYPE html>
@@ -277,7 +288,8 @@ app.get('/gallery', async (req, res) => {
   </head>
   <body>
     <ul>
-      ${listItems}  
+      ${listItems} 
+      ${listItems2} 
     </ul>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
