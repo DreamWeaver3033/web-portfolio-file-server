@@ -22,6 +22,12 @@ app.get('/about', (req, res) => {
   res.sendFile(path.join(__dirname, 'about.html'));
 });
 
+app.get('/drive', (req, res) => {
+  const redirectUrl = 'https://drive.google.com/drive/folders/1nhfLJkRZf0ypTjaxNRATrmxgW_rjYm51?usp=sharing';
+  
+  res.redirect(redirectUrl);
+});
+
 const users = {
   [process.env.MYUSER]: process.env.MYPASS
 };
