@@ -34,14 +34,28 @@ const users = {
 
 const megaLink = process.env.MEGA;
 const googleLink = process.env.GOOGLE;
+const protonLink = process.env.PROTON;
 
-app.use('/mega', basicAuth({
+app.use('/cloud', basicAuth({
   users,
   challenge: true,
   unauthorizedResponse: 'Unauthorized access'
 }));
 
-app.get('/mega', async (req,res) => {
+app.get('/cloud/drive', (req, res) => {
+  const redirectUrl = googleLink;
+  res.redirect(redirectUrl);
+});
+app.get('/cloud/mega', (req, res) => {
+  const redirectUrl = megaLink;
+  res.redirect(redirectUrl);
+});
+app.get('/cloud/proton', (req, res) => {
+  const redirectUrl = protonLink;
+  res.redirect(redirectUrl);
+});
+
+app.get('/cloud', async (req,res) => {
   
   console.log(req.ip);
   res.send(`
@@ -89,10 +103,13 @@ app.get('/mega', async (req,res) => {
     </a>
     <ul>
       <li>
-        <a href=${megaLink} class="btn btn-outline-info border-2" type="submit" style="margin-bottom:6px;">Mega Link</a>
+        <a href=${megaLink} class="btn btn-outline-info border-2" type="submit" style="margin-bottom:6px;">Mega</a>
       </li>
       <li>
-        <a href=${googleLink} class="btn btn-outline-info border-2" type="submit" style="margin-bottom:6px;">Google Link</a> 
+        <a href=${googleLink} class="btn btn-outline-info border-2" type="submit" style="margin-bottom:6px;">Google</a> 
+      </li>
+      <li>
+        <a href=${protonLink} class="btn btn-outline-info border-2" type="submit" style="margin-bottom:6px;">Proton</a> 
       </li>
     </ul>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
