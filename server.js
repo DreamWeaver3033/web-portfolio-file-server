@@ -41,8 +41,18 @@ app.use('/cloud', basicAuth({
   challenge: true,
   unauthorizedResponse: 'Unauthorized access'
 }));
-
-app.get('/cloud/drive', (req, res) => {
+app.get('/linkedin', (req, res) => {
+  const redirectUrl = 'https://www.linkedin.com/in/myles-weaver-247403196/';
+  res.redirect(redirectUrl);
+});
+app.get('/github', (req, res) => {
+  const redirectUrl = 'https://github.com/DreamWeaver3033';
+  res.redirect(redirectUrl);
+});
+app.get('/vsco', (req, res) => {
+  const redirectUrl = 'https://vsco.co/myles-weaver/gallery';
+  res.redirect(redirectUrl);
+});app.get('/cloud/drive', (req, res) => {
   const redirectUrl = googleLink;
   res.redirect(redirectUrl);
 });
