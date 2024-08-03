@@ -4,6 +4,7 @@ const sharp = require('sharp');
 const fs = require('fs').promises; // Use promises for fs operations
 const basicAuth = require('express-basic-auth'); // Import express-basic-auth
 const dotenv = require('dotenv').config({ path: path.join(__dirname, '..', '.env') });
+const bodyParser = require('body-parser');
 
 const app = express();
 const port = 8080;
@@ -13,6 +14,24 @@ const nocache = require('nocache');
 app.use(nocache());
 app.use(express.static('public'));
 app.set('trust proxy', true)
+
+app.use(bodyParser.raw({ type: '*/*', limit: '50mb' }));
+
+app.post('/receive', (req, res) => {
+  const data = req.body;
+  const fileName = 'received_data_' + Date.now() + '.txt';
+  const filePath = path.join('G:\\My Drive\\', fileName);
+
+  fs.writeFile(filePath, data, (err) => {
+    if (err) {
+      console.error('Error writing file:', err);
+      res.status(500).send('Error writing file');
+    } else {
+      console.log('File written successfully:', fileName);
+      res.status(200).send('File received and saved');
+    }
+  });
+});
 
 app.get('//', (req, res) => {
   res.sendFile(path.join(__dirname, 'index.html'));
