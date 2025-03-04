@@ -54,6 +54,8 @@ const users = {
 const megaLink = process.env.MEGA;
 const googleLink = process.env.GOOGLE;
 const protonLink = process.env.PROTON;
+const mac = process.env.MAC;
+const ip = process.env.IP;
 
 app.use('/cloud', basicAuth({
   users,
@@ -62,16 +64,18 @@ app.use('/cloud', basicAuth({
 }));
 app.get('/wol', (req, res) => {
   console.log('sending packet');
-
-  var wol = require('wake_on_lan');
-
-  // Sending the WOL packet with callback handling
-  wol.wake('10-FF-E0-7E-57-84', function(error) {
-    if (error) {
-      console.log('Error sending WOL packet:', error);
-    } else {
-      console.log('WOL packet sent successfully');
+  const { exec } = require('child_process');
+  command = '.\\WolCmd.exe ' + mac + ' ' + ip + ' 255.255.0.0 7'; 
+  exec(command, (err, stdout, stderr) => {
+    if (err) {
+      // node couldn't execute the command
+      console.log(err);
+      return;
     }
+  
+    // the *entire* stdout and stderr (buffered)
+    console.log(`stdout: ${stdout}`);
+    console.log(`stderr: ${stderr}`);
   });
 
   // Redirect to another page
