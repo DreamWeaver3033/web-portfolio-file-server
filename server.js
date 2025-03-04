@@ -60,6 +60,25 @@ app.use('/cloud', basicAuth({
   challenge: true,
   unauthorizedResponse: 'Unauthorized access'
 }));
+app.get('/wol', (req, res) => {
+  console.log('sending packet');
+
+  var wol = require('wake_on_lan');
+  wol.wake('10-FF-E0-7E-57-84');
+  wol.wake('10-FF-E0-7E-57-84', function(error) {
+    if (error) {
+      console.log(error);
+    } else {
+      console.log('packet sent');
+    }
+
+    var magic_packet = wol.createMagicPacket('20:DE:20:DE:20:DE');
+    });
+
+    res.redirect('https://mylesweaver.net');
+});
+
+
 app.get('/linkedin', (req, res) => {
   const redirectUrl = 'https://www.linkedin.com/in/myles-weaver-247403196/';
   res.redirect(redirectUrl);
