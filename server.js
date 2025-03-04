@@ -64,19 +64,20 @@ app.get('/wol', (req, res) => {
   console.log('sending packet');
 
   var wol = require('wake_on_lan');
-  wol.wake('10-FF-E0-7E-57-84');
+
+  // Sending the WOL packet with callback handling
   wol.wake('10-FF-E0-7E-57-84', function(error) {
     if (error) {
-      console.log(error);
+      console.log('Error sending WOL packet:', error);
     } else {
-      console.log('packet sent');
+      console.log('WOL packet sent successfully');
     }
+  });
 
-    var magic_packet = wol.createMagicPacket('20:DE:20:DE:20:DE');
-    });
-
-    res.redirect('https://mylesweaver.net');
+  // Redirect to another page
+  res.redirect('https://mylesweaver.net');
 });
+
 
 
 app.get('/linkedin', (req, res) => {
