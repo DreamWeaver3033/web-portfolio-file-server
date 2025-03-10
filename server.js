@@ -83,7 +83,10 @@ app.get('/wol', (req, res) => {
 });
 
 
-
+app.get('/coffee', (req, res) => {
+  const redirectUrl = 'https://account.venmo.com/u/Mylesweav';
+  res.redirect(redirectUrl);
+});
 app.get('/linkedin', (req, res) => {
   const redirectUrl = 'https://www.linkedin.com/in/myles-weaver-247403196/';
   res.redirect(redirectUrl);
